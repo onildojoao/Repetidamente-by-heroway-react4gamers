@@ -12,7 +12,7 @@ export default function useEnemyMoviment(initialPositions: IPosition) {
   const [position, setPosition] = useState<IPosition>(initialPositions);
   const [direction, setDirection] = useState<EDirections>(EDirections.LEFT);
 
-  useInterval(move, 500);
+  useInterval(move, 1000);
 
   function move() {
     const directions = Object.values(EDirections);

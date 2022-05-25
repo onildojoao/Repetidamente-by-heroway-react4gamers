@@ -41,6 +41,15 @@ function GameStatus() {
         Passos: {steps}
       </span>
 
+<span style={{
+        paddingLeft: 15,
+        paddingRight: 10,
+        borderRight: '2px solid white',
+        color: 'white',
+        fontSize: 25,
+      }}>
+        Moedas: 10
+      </span>
       <button style={{
         color: 'white',
         fontSize: 25,
@@ -50,6 +59,8 @@ function GameStatus() {
         cursor: 'pointer'
 
       }} onClick={reload}>⟳</button>
+
+
     </div>
   )
 }

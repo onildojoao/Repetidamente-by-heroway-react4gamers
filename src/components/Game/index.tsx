@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { CanvasContext } from '../../contexts/canvas';
 import Board from './Board';
-import Debugger from './Debugger';
 
 // <MiniDemon initialPosition={{ x: 11, y: 3 }} />
 // <Chest position={{ x: 3, y: 5 }} />
@@ -16,14 +15,15 @@ import Debugger from './Debugger';
 // <Trap position={{ x: 13, y: 15 }} />
 // <MiniDemon initialPosition={{ x: 17, y: 16 }} />
 // <Hero initialPosition={{ x: 1, y: 17 }} />
+//<Debugger canvas={canvas}>
 
+//    </Debugger>
 function Game() {
   const { canvas } = useContext(CanvasContext);
 
   return (
-    <Debugger canvas={canvas}>
-      <Board canvas={canvas} />
-    </Debugger>
+    <Board canvas={canvas} />
+
   );
 }
 

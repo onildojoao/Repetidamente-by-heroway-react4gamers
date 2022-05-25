@@ -2,8 +2,11 @@ import React, { createContext, PropsWithChildren, useState } from 'react';
 import { IGameStatusContext } from './types';
 
 export const GameStatusContext = createContext<IGameStatusContext>({
-  steps: 56,
+  steps: 10,
   updateSteps: () => null,
+
+  //coins: 0,
+  //updateCoins: () => null,
 
   dead: false,
   updateIsDead: () => null,
@@ -14,7 +17,7 @@ export const GameStatusContext = createContext<IGameStatusContext>({
 
 function GameStatusProvider(props: PropsWithChildren<{}>) {
   const [chestsState, setChestsState] = useState<IGameStatusContext>({
-    steps: 56,
+    steps: 10,
     updateSteps: () => {
       setChestsState(prevState => {
         const remainingSteps = prevState.steps - 1;
@@ -26,6 +29,8 @@ function GameStatusProvider(props: PropsWithChildren<{}>) {
         }
       });
     },
+
+
 
     dead: false,
     updateIsDead: () => {
