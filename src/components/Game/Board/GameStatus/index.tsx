@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GameStatusContext } from '../../../../contexts/gameStatus';
 
 function GameStatus() {
-  const { steps, dead, winner } = useContext(GameStatusContext);
+  const { steps, coins, dead, winner } = useContext(GameStatusContext);
 
   function reload() {
     window.location.reload();
@@ -48,7 +48,7 @@ function GameStatus() {
         color: 'white',
         fontSize: 25,
       }}>
-        Moedas: 10
+        Moedas: {coins}
       </span>
       <button style={{
         color: 'white',

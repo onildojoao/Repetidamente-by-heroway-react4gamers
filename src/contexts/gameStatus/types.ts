@@ -2,8 +2,8 @@ export interface IGameStatusContext {
   steps: number;
   updateSteps: () => void;
 
-  //coins: number,
-  //updateCoins: () => void;
+  coins: number,
+  updateCoins: () => void;
 
   dead: boolean;
   updateIsDead: () => void;

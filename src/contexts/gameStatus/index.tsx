@@ -2,11 +2,11 @@ import React, { createContext, PropsWithChildren, useState } from 'react';
 import { IGameStatusContext } from './types';
 
 export const GameStatusContext = createContext<IGameStatusContext>({
-  steps: 10,
+  steps: 60,
   updateSteps: () => null,
 
-  //coins: 0,
-  //updateCoins: () => null,
+  coins: 0,
+  updateCoins: () => null,
 
   dead: false,
   updateIsDead: () => null,
@@ -16,10 +16,10 @@ export const GameStatusContext = createContext<IGameStatusContext>({
 });
 
 function GameStatusProvider(props: PropsWithChildren<{}>) {
-  const [chestsState, setChestsState] = useState<IGameStatusContext>({
-    steps: 10,
+  const [gameState, setGameState] = useState<IGameStatusContext>({
+    steps: 60,
     updateSteps: () => {
-      setChestsState(prevState => {
+      setGameState(prevState => {
         const remainingSteps = prevState.steps - 1;
 
         return {
@@ -30,20 +30,23 @@ function GameStatusProvider(props: PropsWithChildren<{}>) {
       });
     },
 
-
+coins: 0,
+updateCoins:() => {
+  setGameState(prevState => ({ ...prevState, coins: prevState.coins + 1 }));
+},
 
     dead: false,
     updateIsDead: () => {
-      setChestsState(prevState => ({ ...prevState, dead: true }));
+      setGameState(prevState => ({ ...prevState, dead: true }));
     },
 
     winner: false,
     updateIsWinner: () => {
-      setChestsState(prevState => ({ ...prevState, winner: true }));
+      setGameState(prevState => ({ ...prevState, winner: true }));
     },
   });
 
-  return <GameStatusContext.Provider value={chestsState}>{props.children}</GameStatusContext.Provider>;
+  return <GameStatusContext.Provider value={gameState}>{props.children}</GameStatusContext.Provider>;
 }
 
 export default GameStatusProvider;
