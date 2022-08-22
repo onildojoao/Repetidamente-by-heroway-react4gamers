@@ -54,7 +54,7 @@ export function getCanvasMap(canvas: ICanvas): ICanvasMap {
   }
 
   return map;
-};
+}
 
 export function handleWalk(direction: EDirections, position: IPosition): IPosition {
   switch (direction) {

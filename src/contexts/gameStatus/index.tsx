@@ -8,6 +8,9 @@ export const GameStatusContext = createContext<IGameStatusContext>({
   coins: 0,
   updateCoins: () => null,
 
+  chests: 0,
+  updateChests: () => null,
+
   dead: false,
   updateIsDead: () => null,
 
@@ -26,14 +29,26 @@ function GameStatusProvider(props: PropsWithChildren<{}>) {
           ...prevState,
           steps: remainingSteps,
           dead: remainingSteps === -1,
-        }
+        };
       });
     },
 
-coins: 0,
-updateCoins:() => {
-  setGameState(prevState => ({ ...prevState, coins: prevState.coins + 1 }));
-},
+    chests: 0,
+    updateChests: () => {
+      setGameState(prevState => {
+        const colectedChests = prevState.chests + 1;
+
+        return {
+          ...prevState,
+          chests: colectedChests,
+        };
+      });
+    },
+
+    coins: 0,
+    updateCoins: () => {
+      setGameState(prevState => ({ ...prevState, coins: prevState.coins + 1 }));
+    },
 
     dead: false,
     updateIsDead: () => {
@@ -46,7 +61,9 @@ updateCoins:() => {
     },
   });
 
-  return <GameStatusContext.Provider value={gameState}>{props.children}</GameStatusContext.Provider>;
+  return (
+    <GameStatusContext.Provider value={gameState}>{props.children}</GameStatusContext.Provider>
+  );
 }
 
 export default GameStatusProvider;
